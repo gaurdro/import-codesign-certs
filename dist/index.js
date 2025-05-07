@@ -28541,7 +28541,10 @@ async function run() {
 async function cleanup() {
     try {
         const keychain = (0, core_1.getInput)('keychain');
-        await (0, security_1.deleteKeychain)(keychain);
+        const createKeychain = (0, core_1.getInput)('create-keychain');
+        if (createKeychain !== 'true') {
+            await (0, security_1.deleteKeychain)(keychain);
+        }
     }
     catch (error) {
         if (error instanceof Error) {
