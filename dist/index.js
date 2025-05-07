@@ -28541,8 +28541,8 @@ async function run() {
 async function cleanup() {
     try {
         const keychain = (0, core_1.getInput)('keychain');
-        const createKeychain = (0, core_1.getInput)('create-keychain');
-        if (createKeychain !== 'true') {
+        const delKeychain = (0, core_1.getInput)('create-keychain') === 'true';
+        if (delKeychain) {
             await (0, security_1.deleteKeychain)(keychain);
         }
     }

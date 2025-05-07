@@ -64,8 +64,8 @@ async function run(): Promise<void> {
 async function cleanup(): Promise<void> {
   try {
     const keychain: string = getInput('keychain')
-    const createKeychain: string = getInput('create-keychain')
-    if (createKeychain !== 'true') {
+    const delKeychain: boolean = getInput('create-keychain') === 'true'
+    if (delKeychain) {
       await deleteKeychain(keychain)
     }
   } catch (error) {
